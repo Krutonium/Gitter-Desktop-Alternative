@@ -22,21 +22,25 @@ Partial Class frmGitter
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Me.components = New System.ComponentModel.Container()
         Me.MenuStrip1 = New System.Windows.Forms.MenuStrip()
         Me.GitterToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.GitterV01ToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.GitterNextToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.CloseToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.OptionsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ResetSettingsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.WB = New System.Windows.Forms.WebBrowser()
+        Me.ntfy = New System.Windows.Forms.NotifyIcon(Me.components)
         Me.MenuStrip1.SuspendLayout()
         Me.SuspendLayout()
         '
         'MenuStrip1
         '
-        Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.GitterToolStripMenuItem})
+        Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.GitterToolStripMenuItem, Me.OptionsToolStripMenuItem})
         Me.MenuStrip1.Location = New System.Drawing.Point(0, 0)
         Me.MenuStrip1.Name = "MenuStrip1"
-        Me.MenuStrip1.Size = New System.Drawing.Size(784, 24)
+        Me.MenuStrip1.Size = New System.Drawing.Size(495, 24)
         Me.MenuStrip1.TabIndex = 0
         Me.MenuStrip1.Text = "MenuStrip1"
         '
@@ -65,26 +69,44 @@ Partial Class frmGitter
         Me.CloseToolStripMenuItem.Size = New System.Drawing.Size(130, 22)
         Me.CloseToolStripMenuItem.Text = "Close"
         '
+        'OptionsToolStripMenuItem
+        '
+        Me.OptionsToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ResetSettingsToolStripMenuItem})
+        Me.OptionsToolStripMenuItem.Name = "OptionsToolStripMenuItem"
+        Me.OptionsToolStripMenuItem.Size = New System.Drawing.Size(61, 20)
+        Me.OptionsToolStripMenuItem.Text = "Options"
+        '
+        'ResetSettingsToolStripMenuItem
+        '
+        Me.ResetSettingsToolStripMenuItem.Name = "ResetSettingsToolStripMenuItem"
+        Me.ResetSettingsToolStripMenuItem.Size = New System.Drawing.Size(147, 22)
+        Me.ResetSettingsToolStripMenuItem.Text = "Reset Settings"
+        '
         'WB
         '
         Me.WB.Dock = System.Windows.Forms.DockStyle.Fill
         Me.WB.Location = New System.Drawing.Point(0, 24)
         Me.WB.MinimumSize = New System.Drawing.Size(20, 20)
         Me.WB.Name = "WB"
-        Me.WB.Size = New System.Drawing.Size(784, 537)
+        Me.WB.Size = New System.Drawing.Size(495, 138)
         Me.WB.TabIndex = 1
         Me.WB.Url = New System.Uri("http://www.gitter.im/", System.UriKind.Absolute)
+        '
+        'ntfy
+        '
+        Me.ntfy.Text = "NotifyIcon1"
+        Me.ntfy.Visible = True
         '
         'frmGitter
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(784, 561)
+        Me.ClientSize = New System.Drawing.Size(495, 162)
         Me.Controls.Add(Me.WB)
         Me.Controls.Add(Me.MenuStrip1)
         Me.MainMenuStrip = Me.MenuStrip1
         Me.Name = "frmGitter"
-        Me.Text = "Gitter"
+        Me.Text = "UnOfficial Gitter Client"
         Me.MenuStrip1.ResumeLayout(False)
         Me.MenuStrip1.PerformLayout()
         Me.ResumeLayout(False)
@@ -97,5 +119,8 @@ Partial Class frmGitter
     Friend WithEvents GitterNextToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents CloseToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents WB As System.Windows.Forms.WebBrowser
+    Friend WithEvents OptionsToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents ResetSettingsToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents ntfy As System.Windows.Forms.NotifyIcon
 
 End Class
