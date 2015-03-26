@@ -5,9 +5,6 @@
     <Setting Name="SizeW" Type="System.String" Scope="User">
       <Value Profile="(Default)">1250</Value>
     </Setting>
-    <Setting Name="GitterNext" Type="System.Boolean" Scope="User">
-      <Value Profile="(Default)">False</Value>
-    </Setting>
     <Setting Name="SizeH" Type="System.String" Scope="User">
       <Value Profile="(Default)">700</Value>
     </Setting>

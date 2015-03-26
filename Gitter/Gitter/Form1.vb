@@ -7,34 +7,22 @@ Public Class frmGitter
     Dim GitNext As Boolean
     Dim time As DateTime
     Private Sub GitterNextToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles GitterNextToolStripMenuItem.Click
-        If GitNext = False Then
-            GitNext = True
-            My.Settings.GitterNext = True
-            Dim cook As New Cookie("gitter_staging=", "staged", "gitter.im", "/")
-            InternetSetCookie("https://www.gitter.com", Nothing, cook.ToString() + "; expires = " & time.ToUniversalTime().ToString("ddd, dd-MMM-yyyy HH:mm:ss") & " GMT")
-        Else
-            GitNext = False
-            My.Settings.GitterNext = False
-            Dim cook As New Cookie("gitter_staging", "none", "gitter.im", "/")
-            InternetSetCookie("https://www.gitter.com", Nothing, cook.ToString() + "; expires = " & time.ToUniversalTime().ToString("ddd, dd-MMM-yyyy HH:mm:ss") & " GMT")
-        End If
-        My.Settings.Save()
-        WB.Url = (New Uri("http://www.gitter.im/"))
-        WB.Navigate(WB.Url)
+        WB.Url = (New Uri("javascript:void((function(d){document.cookie='gitter_staging=' + (document.cookie.indexOf('gitter_staging=staged') >= 0 ?  'none' : 'staged') + ';domain=.gitter.im;path=/;expires=' + new Date(Date.now() + 31536000000).toUTCString(); location.reload();})(document));"))
     End Sub
 
     Private Sub CloseToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles CloseToolStripMenuItem.Click
         Close()
     End Sub
 
+    Private Sub frmGitter_FormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing
+        Me.WindowState = FormWindowState.Minimized
+
+    End Sub
+    Private contextMenu1 As System.Windows.Forms.ContextMenu
+
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         GitterV01ToolStripMenuItem.Enabled = False
-        GitterNextToolStripMenuItem.Enabled = False
-        NTFYCon.BalloonTipText() = "TEST"
-        NTFYCon.BalloonTipIcon = ToolTipIcon.Warning
-        NTFYCon.BalloonTipTitle = "TEST TITLE"
-
-        Dim DisableQuirks As RegistryKey
+        Dim DisableQuirks As RegistryKey 'Internet Explorer will default to IE 7 Display Mode unless you tell it not to.
         DisableQuirks = Registry.CurrentUser.OpenSubKey("Software\Microsoft\Internet Explorer\Main\", True)
         DisableQuirks.CreateSubKey("Software\Microsoft\Internet Explorer\Main\FeatureControl\FEATURE_BROWSER_EMULATION")
         DisableQuirks = Registry.CurrentUser.OpenSubKey("Software\Microsoft\Internet Explorer\Main\FeatureControl\FEATURE_BROWSER_EMULATION", True)
@@ -43,21 +31,17 @@ Public Class frmGitter
         'QUIRKS DISABLED!
         Me.Height = My.Settings.SizeH
         Me.Width = My.Settings.SizeW
-        GitNext = My.Settings.GitterNext
-        Me.Show()
-        NTFYCon.Visible = True
-        NTFYCon.ShowBalloonTip(900)
+        'ntfy.Icon = Me.Icon
+
+        Me.contextMenu1 = New System.Windows.Forms.ContextMenu
     End Sub
+
 
     Private Sub frmGitter_ResizeEnd(sender As Object, e As EventArgs) Handles Me.ResizeEnd
         My.Settings.SizeH = Me.Height
         My.Settings.SizeW = Me.Width
         My.Settings.Save()
     End Sub
-    <DllImport("wininet.dll", CharSet:=CharSet.Auto, SetLastError:=True)> _
-    Private Shared Function InternetSetCookie(lpszUrlName As String, lpszCookieName As String, lpszCookieData As String) As Boolean
-    End Function
-
     Private Sub ResetSettingsToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ResetSettingsToolStripMenuItem.Click
         My.Settings.Reset()
         Me.Height = My.Settings.SizeH
