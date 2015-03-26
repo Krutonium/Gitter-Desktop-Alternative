@@ -54,38 +54,38 @@ Namespace My
             End Get
         End Property
         
-        <Global.System.Configuration.UserScopedSettingAttribute(), _
-         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
-         Global.System.Configuration.DefaultSettingValueAttribute("800")> _
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("1250")>  _
         Public Property SizeW() As String
             Get
-                Return CType(Me("SizeW"), String)
+                Return CType(Me("SizeW"),String)
             End Get
-            Set(value As String)
+            Set
                 Me("SizeW") = value
             End Set
         End Property
-
-        <Global.System.Configuration.UserScopedSettingAttribute(), _
-         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
-         Global.System.Configuration.DefaultSettingValueAttribute("False")> _
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("False")>  _
         Public Property GitterNext() As Boolean
             Get
-                Return CType(Me("GitterNext"), Boolean)
+                Return CType(Me("GitterNext"),Boolean)
             End Get
-            Set(value As Boolean)
+            Set
                 Me("GitterNext") = value
             End Set
         End Property
-
-        <Global.System.Configuration.UserScopedSettingAttribute(), _
-         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
-         Global.System.Configuration.DefaultSettingValueAttribute("800")> _
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("700")>  _
         Public Property SizeH() As String
             Get
-                Return CType(Me("SizeH"), String)
+                Return CType(Me("SizeH"),String)
             End Get
-            Set(value As String)
+            Set
                 Me("SizeH") = value
             End Set
         End Property

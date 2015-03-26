@@ -28,8 +28,12 @@ Public Class frmGitter
     End Sub
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-
         GitterV01ToolStripMenuItem.Enabled = False
+        GitterNextToolStripMenuItem.Enabled = False
+        NTFYCon.BalloonTipText() = "TEST"
+        NTFYCon.BalloonTipIcon = ToolTipIcon.Warning
+        NTFYCon.BalloonTipTitle = "TEST TITLE"
+
         Dim DisableQuirks As RegistryKey
         DisableQuirks = Registry.CurrentUser.OpenSubKey("Software\Microsoft\Internet Explorer\Main\", True)
         DisableQuirks.CreateSubKey("Software\Microsoft\Internet Explorer\Main\FeatureControl\FEATURE_BROWSER_EMULATION")
@@ -40,6 +44,9 @@ Public Class frmGitter
         Me.Height = My.Settings.SizeH
         Me.Width = My.Settings.SizeW
         GitNext = My.Settings.GitterNext
+        Me.Show()
+        NTFYCon.Visible = True
+        NTFYCon.ShowBalloonTip(900)
     End Sub
 
     Private Sub frmGitter_ResizeEnd(sender As Object, e As EventArgs) Handles Me.ResizeEnd
@@ -50,4 +57,10 @@ Public Class frmGitter
     <DllImport("wininet.dll", CharSet:=CharSet.Auto, SetLastError:=True)> _
     Private Shared Function InternetSetCookie(lpszUrlName As String, lpszCookieName As String, lpszCookieData As String) As Boolean
     End Function
+
+    Private Sub ResetSettingsToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ResetSettingsToolStripMenuItem.Click
+        My.Settings.Reset()
+        Me.Height = My.Settings.SizeH
+        Me.Width = My.Settings.SizeW
+    End Sub
 End Class
