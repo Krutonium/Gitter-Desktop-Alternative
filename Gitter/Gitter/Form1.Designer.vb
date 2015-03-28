@@ -94,7 +94,7 @@ Partial Class frmGitter
         '
         'ntfy
         '
-        Me.ntfy.Text = "NotifyIcon1"
+        Me.ntfy.Text = "UnOfficial Gitter Client"
         Me.ntfy.Visible = True
         '
         'frmGitter
